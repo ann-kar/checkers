@@ -1,12 +1,26 @@
+import styled from "styled-components";
+
 import { Board } from "./components/Board/Board";
+import { Instructions } from "./components/instructions/Instructions";
 import { PawnMovementContextProvider } from "./providers/ContextProvider";
+
+const StyledApp = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 function App() {
   return (
     <PawnMovementContextProvider>
-      <div className="App">
+      <StyledApp>
+        <div>
         <Board />
-      </div>
+        <Instructions/>
+        </div>
+      </StyledApp>
     </PawnMovementContextProvider>
   );
 }
