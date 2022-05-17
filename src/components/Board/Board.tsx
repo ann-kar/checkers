@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Tile } from "../Tile/Tile";
-import { Pawn } from "../Pawn/Pawn/Pawn";
+import { PawnWrapper } from "../PawnWrapper/PawnWrapper";
 import { Row } from "../Row/Row";
 
 const StyledBoard = styled.div`
@@ -21,7 +21,7 @@ export const Board = () => {
           </Row>
         );
       })}
-      <Pawn />
+      <PawnWrapper />
     </StyledBoard>
   );
 };

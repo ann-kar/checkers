@@ -1,13 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { produce } from "immer";
+import styled from "styled-components";
 
-import "./Pawn.css";
+import { Pawn } from "../Pawn/Pawn";
+import { Offset } from "../../types/types";
 
-export const Pawn = () => {
+const StyledPawnWrapper = styled.div`
+  background-color: transparent;
+`;
+
+export const PawnWrapper = () => {
   const pawnEl = useRef<any>();
   const [direction, setDirection] = useState("up");
   const [position, setPosition] = useState({ row: 0, col: 0 });
-  const [translate, setTranslate] = useState({ bottom: 0, left: 0 });
+  const [offset, setOffset] = useState<Offset>({ bottom: 0, left: 0 });
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -18,7 +24,7 @@ export const Pawn = () => {
   });
 
   useEffect(() => {
-    setTranslate(
+    setOffset(
       produce((draft) => {
         return {
           bottom: position.col * 2.1 + "rem",
@@ -30,7 +36,6 @@ export const Pawn = () => {
 
   const handleKeyDown = (event: any) => {
     pawnEl.current.focus();
-
     if (event.key === "ArrowUp") {
       if (position.col + 1 <= 9) {
         setDirection("up");
@@ -69,10 +74,8 @@ export const Pawn = () => {
   };
 
   return (
-    <div
-      className="Pawn"
-      style={translate}
-      ref={pawnEl}
-      onKeyUp={handleKeyDown}></div>
+    <StyledPawnWrapper ref={pawnEl} onKeyUp={handleKeyDown}>
+      <Pawn offset={offset} />
+    </StyledPawnWrapper>
   );
 };
