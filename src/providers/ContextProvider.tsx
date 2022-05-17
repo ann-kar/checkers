@@ -1,12 +1,6 @@
 import produce from "immer";
 import React, { useContext, useState, createContext, ReactNode } from "react";
-
-export interface IPosition {
-  row: number;
-  col: number;
-}
-
-export type Direction = "up" | "down";
+import { IPosition, Direction } from "../types/types";
 
 interface IPawnMovementContext {
   position: IPosition;
@@ -71,7 +65,7 @@ export const PawnMovementContextProvider = ({
         moveLeft,
         moveRight,
         moveDownLeft,
-        moveDownRight
+        moveDownRight,
       }}>
       {children}
     </PawnMovementContext.Provider>

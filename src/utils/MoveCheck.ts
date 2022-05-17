@@ -1,4 +1,4 @@
-import { IPosition } from "../providers/ContextProvider";
+import { IPosition } from "../types/types";
 
 export class MoveCheck {
 
