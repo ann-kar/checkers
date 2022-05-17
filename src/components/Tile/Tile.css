@@ -1,0 +1,9 @@
+.Tile {
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid black;
+}
+
+.Row {
+  display: flex;
+}

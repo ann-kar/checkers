@@ -1,0 +1,7 @@
+.Pawn {
+  position: absolute;
+  border-radius: 50%;
+  background-color: red;
+  width: 2rem;
+  height: 2rem;
+}
