@@ -2,12 +2,15 @@ import React from "react";
 
 import "./App.css";
 import { Board } from "./components/Board/Board";
+import { PawnMovementContextProvider } from "./providers/ContextProvider";
 
 function App() {
   return (
-    <div className="App">
-      <Board />
-    </div>
+    <PawnMovementContextProvider>
+      <div className="App">
+        <Board />
+      </div>
+    </PawnMovementContextProvider>
   );
 }
 

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { produce } from "immer";
 import styled from "styled-components";
 
 import { Pawn } from "../Pawn/Pawn";
 import { Offset } from "../../types/types";
+import { usePawnMovement } from "../../providers/ContextProvider";
 
 const StyledPawnWrapper = styled.div`
   background-color: transparent;
@@ -11,8 +11,7 @@ const StyledPawnWrapper = styled.div`
 
 export const PawnWrapper = () => {
   const pawnEl = useRef<any>();
-  const [direction, setDirection] = useState("up");
-  const [position, setPosition] = useState({ row: 0, col: 0 });
+  const { setDirection, position, moveRight, moveLeft } = usePawnMovement();
   const [offset, setOffset] = useState<Offset>({ bottom: 0, left: 0 });
 
   useEffect(() => {
@@ -37,21 +36,12 @@ export const PawnWrapper = () => {
         setDirection("up");
       }
     } else if (event.key === "ArrowRight") {
-      setDirection("right");
       if (position.row + 1 <= 9 && position.col + 1 <= 9) {
-        setPosition(
-          produce((draft) => {
-            return { row: draft.row + 1, col: draft.col + 1 };
-          })
-        );
+        moveRight();
       }
     } else if (event.key === "ArrowLeft") {
       if (position.row - 1 >= 0 && position.col + 1 <= 9) {
-        setPosition(
-          produce((draft) => {
-            return { row: draft.row - 1, col: draft.col + 1 };
-          })
-        );
+       moveLeft();
       }
     } else if (event.key === "ArrowDown") {
       if (position.col - 1 >= 0) {
