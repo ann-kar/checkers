@@ -6,8 +6,8 @@ interface IPawnMovementContext {
   position: IPosition;
   direction: Direction;
   setDirection: React.Dispatch<React.SetStateAction<Direction>>;
-  moveLeft: () => void;
-  moveRight: () => void;
+  moveUpLeft: () => void;
+  moveUpRight: () => void;
   moveDownLeft: () => void;
   moveDownRight: () => void;
 }
@@ -24,7 +24,7 @@ export const PawnMovementContextProvider = ({
   const [direction, setDirection] = useState<Direction>("up");
   const [position, setPosition] = useState<IPosition>({ row: 0, col: 0 });
 
-  const moveRight = () => {
+  const moveUpRight = () => {
     setPosition(
       produce((draft) => {
         return { row: draft.row + 1, col: draft.col + 1 };
@@ -32,7 +32,7 @@ export const PawnMovementContextProvider = ({
     );
   };
 
-  const moveLeft = () => {
+  const moveUpLeft = () => {
     setPosition(
       produce((draft) => {
         return { row: draft.row + 1, col: draft.col - 1 };
@@ -62,8 +62,8 @@ export const PawnMovementContextProvider = ({
         position,
         direction,
         setDirection,
-        moveLeft,
-        moveRight,
+        moveUpLeft,
+        moveUpRight,
         moveDownLeft,
         moveDownRight,
       }}>

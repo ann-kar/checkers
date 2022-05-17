@@ -11,8 +11,8 @@ export const PawnWrapper = () => {
     setDirection,
     direction,
     position,
-    moveRight,
-    moveLeft,
+    moveUpRight,
+    moveUpLeft,
     moveDownRight,
     moveDownLeft,
   } = usePawnMovement();
@@ -49,28 +49,20 @@ export const PawnWrapper = () => {
         break;
       case "ArrowRight":
         if (MoveCheck.canMoveRight(position)) {
-          if (
-            isQueen &&
-            direction === "down" &&
-            MoveCheck.canMoveDown(position)
-          ) {
+          if (isQueen && direction === "down" && MoveCheck.canMoveDown(position)) {
             moveDownRight();
           } else if (direction === "up" && MoveCheck.canMoveUp(position)) {
-            moveRight();
+            moveUpRight();
             checkIfQueen();
           }
         }
         break;
       case "ArrowLeft":
         if (MoveCheck.canMoveLeft(position)) {
-          if (
-            isQueen &&
-            direction === "down" &&
-            MoveCheck.canMoveDown(position)
-          ) {
+          if (isQueen && direction === "down" && MoveCheck.canMoveDown(position)) {
             moveDownLeft();
           } else if (direction === "up" && MoveCheck.canMoveUp(position)) {
-            moveLeft();
+            moveUpLeft();
             checkIfQueen();
           }
         }
