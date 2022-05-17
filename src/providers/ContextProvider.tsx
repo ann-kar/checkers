@@ -10,11 +10,10 @@ export type Direction = "up" | "down";
 
 interface IPawnMovementContext {
   position: IPosition;
-  setPosition: React.Dispatch<React.SetStateAction<IPosition>>;
   direction: Direction;
   setDirection: React.Dispatch<React.SetStateAction<Direction>>;
-  moveLeft: any;
-  moveRight: any;
+  moveLeft: () => void;
+  moveRight: () => void;
 }
 
 export const PawnMovementContext = createContext<IPawnMovementContext | null>(
@@ -49,7 +48,6 @@ export const PawnMovementContextProvider = ({
     <PawnMovementContext.Provider
       value={{
         position,
-        setPosition,
         direction,
         setDirection,
         moveLeft,
@@ -58,7 +56,7 @@ export const PawnMovementContextProvider = ({
       {children}
     </PawnMovementContext.Provider>
   );
-}
+};
 
 export function usePawnMovement() {
   const context = useContext(PawnMovementContext);
