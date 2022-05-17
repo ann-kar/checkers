@@ -1,23 +1,27 @@
-import { Tile } from "../../Tile/Tile";
-import { Pawn } from "../Pawn/Pawn";
+import styled from "styled-components";
+import { Tile } from "../Tile/Tile";
+import { Pawn } from "../Pawn/Pawn/Pawn";
+import { Row } from "../Row/Row";
 
-import "./Board.css";
+const StyledBoard = styled.div`
+  position: relative;
+`;
 
 export const Board = () => {
   const tiles = new Array(10).fill(0).map((el) => new Array(10).fill(0));
 
   return (
-    <div className="Board">
+    <StyledBoard>
       {tiles.map((row, i) => {
         return (
-          <div key={`row-${i}`} className="Row">
+          <Row key={`row-${i}`}>
             {row.map((tile, j) => {
               return <Tile key={`tile-${i}-${j}`} />;
             })}
-          </div>
+          </Row>
         );
       })}
       <Pawn />
-    </div>
+    </StyledBoard>
   );
 };
