@@ -5,7 +5,7 @@ import { Offset } from "../../types/types";
 const StyledPawn = styled.div`
   position: absolute;
   border-radius: 50%;
-  background-color: red;
+  background-color:  ${(props: PawnProps) => props.isQueen ? "gold" : "red"};
   width: 2rem;
   height: 2rem;
   bottom: ${(props: PawnProps) => props.offset.bottom};
@@ -14,8 +14,9 @@ const StyledPawn = styled.div`
 
 interface PawnProps {
   offset: Offset;
+  isQueen: boolean;
 }
 
-export const Pawn = ({ offset }: PawnProps) => {
-  return <StyledPawn offset={offset} />;
+export const Pawn = ({ offset, isQueen }: PawnProps) => {
+  return <StyledPawn offset={offset} isQueen={isQueen} />;
 };
