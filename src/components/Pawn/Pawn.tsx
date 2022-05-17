@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Offset } from "../../types/types";
+import { IOffset } from "../../types/types";
 
 const StyledPawn = styled.div`
   position: absolute;
@@ -13,7 +13,7 @@ const StyledPawn = styled.div`
 `;
 
 interface PawnProps {
-  offset: Offset;
+  offset: IOffset;
   isQueen: boolean;
 }
 

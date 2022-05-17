@@ -1,4 +1,4 @@
-export interface Offset {
+export interface IOffset {
   bottom: number | string;
   left: number | string;
 }

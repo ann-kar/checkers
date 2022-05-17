@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import { Pawn } from "../Pawn/Pawn";
-import { Offset } from "../../types/types";
+import { IOffset } from "../../types/types";
 import { usePawnMovement } from "../../providers/ContextProvider";
 import { MoveCheck } from "../../utils/MoveCheck";
 
@@ -21,7 +21,7 @@ export const PawnWrapper = () => {
     moveDownRight,
     moveDownLeft,
   } = usePawnMovement();
-  const [offset, setOffset] = useState<Offset>({ bottom: 0, left: 0 });
+  const [offset, setOffset] = useState<IOffset>({ bottom: 0, left: 0 });
   const [isQueen, setIsQueen] = useState(false);
 
   useEffect(() => {
