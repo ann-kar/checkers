@@ -1,14 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
 
 import { Pawn } from "../Pawn/Pawn";
 import { IOffset } from "../../types/types";
 import { usePawnMovement } from "../../providers/ContextProvider";
 import { MoveCheck } from "../../utils/MoveCheck";
-
-const StyledPawnWrapper = styled.div`
-  background: transparent;
-`;
 
 export const PawnWrapper = () => {
   const pawnEl = useRef<HTMLDivElement>(null);
@@ -60,7 +55,7 @@ export const PawnWrapper = () => {
             MoveCheck.canMoveDown(position)
           ) {
             moveDownRight();
-          } else if (MoveCheck.canMoveUp(position)) {
+          } else if (direction === "up" && MoveCheck.canMoveUp(position)) {
             moveRight();
             checkIfQueen();
           }
@@ -68,14 +63,13 @@ export const PawnWrapper = () => {
         break;
       case "ArrowLeft":
         if (MoveCheck.canMoveLeft(position)) {
-          console.log("can");
           if (
             isQueen &&
             direction === "down" &&
             MoveCheck.canMoveDown(position)
           ) {
             moveDownLeft();
-          } else if (MoveCheck.canMoveUp(position)) {
+          } else if (direction === "up" && MoveCheck.canMoveUp(position)) {
             moveLeft();
             checkIfQueen();
           }
@@ -85,8 +79,8 @@ export const PawnWrapper = () => {
   };
 
   return (
-    <StyledPawnWrapper ref={pawnEl} onKeyUp={handleKeyUp}>
+    <div ref={pawnEl} onKeyUp={handleKeyUp}>
       <Pawn offset={offset} isQueen={isQueen} />
-    </StyledPawnWrapper>
+    </div>
   );
 };
