@@ -24,14 +24,10 @@ export const PawnWrapper = () => {
   });
 
   useEffect(() => {
-    setOffset(
-      produce((draft) => {
-        return {
-          bottom: position.col * 2.1 + "rem",
-          left: position.row * 2.1 + "rem",
-        };
-      })
-    );
+    setOffset({
+      bottom: position.col * 2 + "rem",
+      left: position.row * 2 + "rem",
+    });
   }, [position]);
 
   const handleKeyDown = (event: any) => {
@@ -39,36 +35,27 @@ export const PawnWrapper = () => {
     if (event.key === "ArrowUp") {
       if (position.col + 1 <= 9) {
         setDirection("up");
-        setPosition(
-          produce((draft) => {
-            return { row: draft.row, col: draft.col + 1 };
-          })
-        );
       }
     } else if (event.key === "ArrowRight") {
       setDirection("right");
-      if (position.row + 1 <= 9) {
+      if (position.row + 1 <= 9 && position.col + 1 <= 9) {
         setPosition(
           produce((draft) => {
-            return { row: draft.row + 1, col: draft.col };
+            return { row: draft.row + 1, col: draft.col + 1 };
           })
         );
       }
     } else if (event.key === "ArrowLeft") {
-      if (position.row - 1 >= 0) {
+      if (position.row - 1 >= 0 && position.col + 1 <= 9) {
         setPosition(
           produce((draft) => {
-            return { row: draft.row - 1, col: draft.col };
+            return { row: draft.row - 1, col: draft.col + 1 };
           })
         );
       }
     } else if (event.key === "ArrowDown") {
       if (position.col - 1 >= 0) {
-        setPosition(
-          produce((draft) => {
-            return { row: draft.row, col: draft.col - 1 };
-          })
-        );
+        setDirection("down");
       }
     }
   };
