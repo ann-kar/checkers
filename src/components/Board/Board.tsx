@@ -16,7 +16,11 @@ export const Board = () => {
         return (
           <Row key={`row-${i}`}>
             {row.map((tile, j) => {
-              return <Tile key={`tile-${i}-${j}`} />;
+              let isOdd = true;
+              if (((j % 2) && (i % 2)) || (!(j % 2) && !(i % 2))) {
+                isOdd = false
+              }
+              return <Tile isOdd={isOdd} key={`tile-${i}-${j}`} />;
             })}
           </Row>
         );
