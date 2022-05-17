@@ -41,7 +41,7 @@ export const PawnMovementContextProvider = ({
   const moveLeft = () => {
     setPosition(
       produce((draft) => {
-        return { row: draft.row - 1, col: draft.col + 1 };
+        return { row: draft.row + 1, col: draft.col - 1 };
       })
     );
   };
@@ -57,7 +57,7 @@ export const PawnMovementContextProvider = ({
   const moveDownRight = () => {
     setPosition(
       produce((draft) => {
-        return { row: draft.row + 1, col: draft.col - 1 };
+        return { row: draft.row - 1, col: draft.col + 1 };
       })
     );
   };
