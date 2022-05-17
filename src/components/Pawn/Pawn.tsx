@@ -5,7 +5,7 @@ import { IOffset } from "../../types/types";
 const StyledPawn = styled.div`
   position: absolute;
   border-radius: 50%;
-  background-color:  ${(props: PawnProps) => props.isQueen ? "gold" : "red"};
+  background-color:  ${(props: PawnProps) => props.isQueen ? "#FFB300" : "#CAEEC2"};
   width: 2rem;
   height: 2rem;
   bottom: ${(props: PawnProps) => props.offset.bottom};
