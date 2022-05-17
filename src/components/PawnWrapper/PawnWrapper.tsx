@@ -1,13 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
 
 import { Pawn } from "../Pawn/Pawn";
 import { Offset } from "../../types/types";
 import { usePawnMovement } from "../../providers/ContextProvider";
-
-const StyledPawnWrapper = styled.div`
-  background-color: transparent;
-`;
 
 export const PawnWrapper = () => {
   const pawnEl = useRef<HTMLDivElement>(null);
@@ -52,8 +47,8 @@ export const PawnWrapper = () => {
   };
 
   return (
-    <StyledPawnWrapper ref={pawnEl} onKeyUp={handleKeyDown}>
+    <div ref={pawnEl} onKeyUp={handleKeyDown}>
       <Pawn offset={offset} />
-    </StyledPawnWrapper>
+    </div>
   );
 };
